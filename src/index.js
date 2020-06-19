@@ -53,12 +53,22 @@ const plugin = ({ types: t }) => {
 
   const svgElementVisitor = {
     JSXElement(path, state) {
-      if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
+      // There are two valid opening elements:
+
+      // 1. `svg`
+      if (path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
+        replaceElement(path, state)
+        path.traverse(jsxElementVisitor, state)
         return
       }
 
-      replaceElement(path, state)
-      path.traverse(jsxElementVisitor, state)
+      // 2. `IconRoot`
+      if (
+        path.get('openingElement.name').isJSXIdentifier({ name: 'IconRoot' })
+      ) {
+        path.traverse(jsxElementVisitor, state)
+        return
+      }
     },
   }
 
