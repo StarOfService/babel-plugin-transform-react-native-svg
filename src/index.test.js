@@ -20,6 +20,14 @@ describe('plugin', () => {
     )
   })
 
+  it('should transform elements with IconRoot', () => {
+    const { code } = testPlugin('<IconRoot><path /></IconRoot>')
+    expect(code).to.equal(
+      `import { Path } from "react-native-svg";
+<IconRoot><Path /></IconRoot>;`
+    )
+  })
+
   it('should not add multiple react-native-svg imports', () => {
     const { code } = testPlugin(
       `import "react-native-svg";

@@ -3,7 +3,7 @@
 ## Install
 
 ```
-npm install --save-dev babel-plugin-transform-react-native-svg
+npm install --save-dev @starofservice/babel-plugin-transform-react-native-svg
 ```
 
 ## Usage
@@ -12,7 +12,7 @@ npm install --save-dev babel-plugin-transform-react-native-svg
 
 ```json
 {
-  "plugins": ["babel-plugin-transform-react-native-svg"]
+  "plugins": ["starofservice/babel-plugin-transform-react-native-svg"]
 }
 ```
 
